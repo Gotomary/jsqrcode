@@ -24,5 +24,5 @@ input, label {vertical-align:middle}
 .qrcode-text-btn {display:inline-block; background:url(https://gotomary.github.io/jsqrcode/16px-QR_icon.svg.png) 50% 50% no-repeat; height:1em; width:1.7em; margin-left:-1.7em; cursor:pointer}
 .qrcode-text-btn > input[type=file] {position:absolute; overflow:hidden; width:1px; height:1px; opacity:0}
 </style><form>
-<input type="text" size=16 placeholder="QR Code" class=qrcode-text id="text" ><label class=qrcode-text-btn><input type=file capture=environment onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex=-1></label> 
+<input type="text" size=16 placeholder="QR Code" class=qrcode-text id="text" ><label class=qrcode-text-btn><input type=file capture=environment tabindex=-1 onclick="return showQRIntro();" onchange="openQRCamera(this);"  ></label> 
 <input type="button" id="btn" value="GO" target="_blank" onClick="javascript: window.open('' + document.getElementById('text').value);" /></form>
