@@ -1,4 +1,26 @@
-<script src="https://gotomary.github.io/jsqrcode/src/qr_packed.js"></script><script>function openQRCamera(node) {
+<script src="https://gotomary.github.io/jsqrcode/src/qr_packed.js"></script><script>
+
+function openCleanURL() {
+  let url = document.getElementById('text').value.trim();
+
+  // Remove common prefixes
+  url = url.replace(/^(https?:\/\/)/i, '');
+  url = url.replace(/^www\./i, '');
+
+  // Optional: force https
+  url = 'https://' + url;
+
+  // Basic validation (optional but recommended)
+  if (!url || url === 'https://') {
+    alert('Invalid URL');
+    return;
+  }
+
+  window.open(url, '_blank');
+}
+
+  
+  function openQRCamera(node) {
   var reader = new FileReader();
   reader.onload = function() {
     node.value = "";
@@ -25,4 +47,5 @@ input, label {vertical-align:middle}
 .qrcode-text-btn > input[type=file] {position:absolute; overflow:hidden; width:1px; height:1px; opacity:0}
 </style><form>
 <input type="text" size=16 placeholder="QR Code" class=qrcode-text id="text" ><label class=qrcode-text-btn><input type=file capture=environment tabindex=-1 onclick="return showQRIntro();" onchange="openQRCamera(this);"  ></label> 
-<input type="button" id="btn" value="GO" target="_blank" onClick="javascript: window.open('' + document.getElementById('text').value);" /></form>
+<input type="button" id="btn" value="GO" target="_blank"
+onclick="openCleanURL();" /></form>
